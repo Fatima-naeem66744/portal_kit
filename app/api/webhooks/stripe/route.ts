@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 import type { PlanName } from "@/lib/plan";
 
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
