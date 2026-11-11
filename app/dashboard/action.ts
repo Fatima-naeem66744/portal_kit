@@ -23,11 +23,13 @@ import { createCheckoutSession } from "@/lib/stripebilling/checkout";
 import { getBillingForOrganization } from "@/lib/billing";
 
 
-export async function createProjectAction(prevState: {
+export async function createProjectAction(
+  prevState: {
     success: boolean;
     error: string;
   },
-  formData: FormData) {
+  formData: FormData
+): Promise<{ success: boolean; error: string }> {
   // 1. Get the currently logged-in user
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -83,7 +85,7 @@ export async function createProjectAction(prevState: {
 
   return {
     success: true,
-    project: newProject,
+    error: "",
   };
 } catch (error) {
   return {

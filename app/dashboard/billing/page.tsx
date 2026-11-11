@@ -190,6 +190,9 @@ export default async function billingpage({
                         action={async () => {
                           "use server";
                           const checkout = await upgradePlanAction(planKey as PlanName);
+                          if (!("url" in checkout) || !checkout.url) {
+                            redirect("/dashboard/billing?checkout=unavailable");
+                          }
                           redirect(checkout.url);
                         }}
                       >
